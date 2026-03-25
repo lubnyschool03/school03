@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Disallow: /success/
 
-Sitemap: https://prosvit.co.ua/sitemap.xml
+Sitemap: https://prosvit3.netlify.app/sitemap.xml

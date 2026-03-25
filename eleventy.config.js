@@ -8,6 +8,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets");
     eleventyConfig.addPassthroughCopy("src/admin");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
+    eleventyConfig.addPassthroughCopy("src/google180600d5ded1f79b.html");
 
     // Watch targets
     eleventyConfig.addWatchTarget("./src/css/");
@@ -20,6 +21,18 @@ module.exports = function (eleventyConfig) {
     });
     eleventyConfig.addFilter("markdownify", (markdownString) => {
         return md.render(markdownString);
+    });
+
+    // SEO: Date to ISO format for sitemap
+    eleventyConfig.addFilter("dateToISO", (date) => {
+        if (!date) return new Date().toISOString().split('T')[0];
+        return new Date(date).toISOString().split('T')[0];
+    });
+
+    // SEO: Filter out non-indexable pages from sitemap
+    eleventyConfig.addFilter("isAdminOrSuccess", (url) => {
+        if (!url) return true;
+        return url.startsWith("/admin") || url.startsWith("/success") || url.includes("404") || url.startsWith("/demo-blocks");
     });
 
     return {

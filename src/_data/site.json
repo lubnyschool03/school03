@@ -1,0 +1,22 @@
+{
+    "url": "https://prosvit3.netlify.app",
+    "name": "Гімназія \"ПРОСВІТ\"",
+    "nameShort": "Гімназія ПРОСВІТ",
+    "nameFull": "Гімназія \"ПРОСВІТ\" Лубенської міської ради Лубенського району Полтавської області",
+    "description": "Гімназія «ПРОСВІТ» м. Лубни — сучасний освітній заклад. Якісна середня освіта, досвідчені педагоги, інноваційні методики навчання, STEM-підходи, безпечне середовище.",
+    "phone": "380536161815",
+    "phoneFormatted": "+38 (053) 616-18-15",
+    "email": "school3_lubny@ukr.net",
+    "address": {
+        "streetAddress": "вул. Олександрівська, 8/2",
+        "postalCode": "37500",
+        "addressLocality": "Лубни",
+        "addressRegion": "Полтавська область",
+        "addressCountry": "UA"
+    },
+    "facebook": "https://www.facebook.com/gymnasium.prosvit/",
+    "googleMaps": "https://maps.app.goo.gl/r652sF9",
+    "logo": "/assets/images/logo.png",
+    "foundingYear": 1935,
+    "keywords": "гімназія просвіт, гімназія просвіт лубни, школа просвіт лубни, школа 3 лубни, gymnasium prosvit, prosvit lubny, гімназія просвіт лмр, просвіт лубни школа, гімназія лубни, школа лубни, освіта лубни, навчання лубни"
+}
