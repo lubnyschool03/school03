@@ -1,0 +1,26 @@
+{% set colorClasses = {
+  'rose': 'border-rose-400',
+  'orange': 'border-orange-400',
+  'gray': 'border-gray-400',
+  'emerald': 'border-emerald-400',
+  'blue': 'border-blue-400'
+} %}
+
+<section class="py-12 md:py-16">
+  <div class="container mx-auto px-4">
+    <div class="prose prose-lg prose-teal mx-auto text-secondary">
+      <div class="grid md:grid-cols-{{ block.columns or 2 }} gap-6">
+        {% for item in block.items %}
+          {% set itemColor = item.color or 'blue' %}
+          {% set borderClass = colorClasses[itemColor] or colorClasses['blue'] %}
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 {{ borderClass }}">
+            <div class="text-4xl mb-3">{{ item.icon }}</div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">{{ item.title }}</h3>
+            <p class="text-gray-600 text-sm">{{ item.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

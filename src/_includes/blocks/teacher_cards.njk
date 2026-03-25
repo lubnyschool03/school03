@@ -1,0 +1,53 @@
+{% set colsMap = {
+    '2': 'md:grid-cols-2',
+    '3': 'md:grid-cols-2 lg:grid-cols-3',
+    '4': 'md:grid-cols-2 lg:grid-cols-4'
+} %}
+
+{% set cols = colsMap[block.columns] or 'md:grid-cols-2 lg:grid-cols-3' %}
+
+<div class="my-8">
+    {% if block.title %}
+    <div class="text-center mb-8">
+        <h3 class="text-2xl font-heading font-bold text-gray-900">{{ block.title }}</h3>
+        <div class="h-1 w-16 bg-accent mx-auto mt-3 rounded-full"></div>
+    </div>
+    {% endif %}
+    <div class="grid {{ cols }} gap-6">
+        {% for teacher in block.teachers %}
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+            {% if teacher.photo %}
+            <div class="h-56 overflow-hidden">
+                <img src="{{ teacher.photo }}" alt="{{ teacher.name }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            </div>
+            {% else %}
+            <div class="h-56 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
+                <svg class="w-20 h-20 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            </div>
+            {% endif %}
+            <div class="p-5">
+                <h4 class="font-bold text-gray-900 text-lg">{{ teacher.name }}</h4>
+                {% if teacher.subject %}
+                <p class="text-primary font-semibold text-sm mt-1">{{ teacher.subject }}</p>
+                {% endif %}
+                {% if teacher.category %}
+                <span class="inline-block mt-2 px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">{{ teacher.category }}</span>
+                {% endif %}
+                {% if teacher.experience %}
+                <p class="text-gray-500 text-xs mt-2">📅 Стаж: {{ teacher.experience }}</p>
+                {% endif %}
+                {% if teacher.description %}
+                <p class="text-gray-600 text-sm mt-3 leading-relaxed">{{ teacher.description }}</p>
+                {% endif %}
+                {% if teacher.awards %}
+                <div class="mt-3 flex flex-wrap gap-1">
+                    {% for award in teacher.awards %}
+                    <span class="text-xs bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded-full">🏆 {{ award.text }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="my-8 max-w-3xl mx-auto">
+    <div class="relative bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-10 shadow-sm border border-blue-100">
+        <!-- Decorative quote mark -->
+        <div class="absolute top-4 left-6 text-6xl text-primary/15 font-serif leading-none">"</div>
+        
+        <blockquote class="relative z-10">
+            <p class="text-lg md:text-xl text-gray-800 leading-relaxed italic pl-6">
+                {{ block.text }}
+            </p>
+        </blockquote>
+        
+        <div class="flex items-center gap-4 mt-6 pl-6">
+            {% if block.photo %}
+            <img src="{{ block.photo }}" alt="{{ block.author }}" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md">
+            {% endif %}
+            <div>
+                {% if block.author %}
+                <p class="font-bold text-gray-900">{{ block.author }}</p>
+                {% endif %}
+                {% if block.role %}
+                <p class="text-sm text-gray-500">{{ block.role }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

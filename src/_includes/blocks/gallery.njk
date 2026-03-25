@@ -1,0 +1,19 @@
+<section class="py-12 md:py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        {% if block.title %}
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-heading font-bold text-gray-900">{{ block.title }}</h2>
+            <div class="h-1 w-20 bg-accent mx-auto mt-4 rounded-full"></div>
+        </div>
+        {% endif %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for item in block.images %}
+            <div class="relative group overflow-hidden rounded-xl shadow-lg aspect-[4/3] cursor-pointer">
+                <img src="{{ item.image }}" alt="" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

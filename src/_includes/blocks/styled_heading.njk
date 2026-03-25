@@ -1,0 +1,37 @@
+{% set colorMap = {
+  'default': 'from-gray-700 to-gray-900',
+  'blue': 'from-blue-600 to-indigo-600',
+  'green': 'from-green-600 to-teal-600',
+  'orange': 'from-orange-500 to-red-500',
+  'red': 'from-red-600 to-rose-600',
+  'purple': 'from-purple-600 to-violet-600'
+} %}
+
+{% set underlineMap = {
+  'default': 'bg-gray-200',
+  'blue': 'bg-blue-200',
+  'green': 'bg-green-200',
+  'orange': 'bg-orange-200',
+  'red': 'bg-red-200',
+  'purple': 'bg-purple-200'
+} %}
+
+{% set alignMap = {
+  'left': 'text-left items-start',
+  'center': 'text-center items-center',
+  'right': 'text-right items-end'
+} %}
+
+{% set level = block.level or 'h2' %}
+{% set gradient = colorMap[block.color] or colorMap['default'] %}
+{% set underline = underlineMap[block.color] or underlineMap['default'] %}
+{% set alignClass = alignMap[block.align] or alignMap['left'] %}
+
+<section class="py-8">
+  <div class="container mx-auto px-4 flex flex-col {{ alignClass }}">
+    <{{ level }} class="font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-4 bg-gradient-to-r {{ gradient }} bg-clip-text text-transparent mt-8 inline-block pb-2">
+      {{ block.text }}
+    </{{ level }}>
+    <div class="h-1.5 w-24 {{ underline }} rounded-full opacity-60"></div>
+  </div>
+</section>

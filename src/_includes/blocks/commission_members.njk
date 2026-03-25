@@ -1,0 +1,64 @@
+<section class="py-12 md:py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      {% if block.title %}
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">{{ block.title }}</h2>
+      {% endif %}
+      
+      <div class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl shadow-lg p-8 border-l-4 border-blue-600">
+        <!-- Head of Commission -->
+        {% if block.head %}
+        <div class="mb-6 pb-6 border-b-2 border-blue-200">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                <span>👤</span>
+              </div>
+            </div>
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-1">Голова атестаційної комісії</p>
+              <p class="text-xl font-bold text-gray-900">{{ block.head }}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Secretary -->
+        {% if block.secretary %}
+        <div class="mb-6 pb-6 border-b-2 border-blue-200">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                <span>📝</span>
+              </div>
+            </div>
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wide mb-1">Секретар атестаційної комісії</p>
+              <p class="text-xl font-bold text-gray-900">{{ block.secretary }}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Members -->
+        {% if block.members and block.members.length > 0 %}
+        <div>
+          <p class="text-sm font-semibold text-purple-600 uppercase tracking-wide mb-4">Члени атестаційної комісії</p>
+          <div class="grid gap-3">
+            {% for member in block.members %}
+            <div class="flex items-center gap-3 bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div class="flex-shrink-0">
+                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold">
+                  {{ loop.index }}
+                </div>
+              </div>
+              <p class="text-lg font-medium text-gray-800">{{ member }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

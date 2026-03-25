@@ -1,0 +1,27 @@
+<div class="my-8 max-w-5xl mx-auto">
+    {% if block.title %}
+    <h3 class="text-2xl font-heading font-bold text-gray-900 mb-6">{{ block.title }}</h3>
+    {% endif %}
+    <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+            {% if block.headers | length %}
+            <thead>
+                <tr class="bg-gradient-to-r from-primary to-blue-700 text-white">
+                    {% for header in block.headers %}
+                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap">{{ header.text }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            {% endif %}
+            <tbody>
+                {% for row in block.rows %}
+                <tr class="{{ 'bg-white' if loop.index % 2 == 1 else 'bg-blue-50/40' }} hover:bg-blue-50 transition-colors border-t border-gray-100">
+                    {% for cell in row.cells %}
+                    <td class="px-5 py-3.5 text-gray-700">{{ cell.text }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

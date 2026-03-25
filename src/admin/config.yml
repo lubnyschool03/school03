@@ -1,0 +1,435 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images"
+public_folder: "/assets/images"
+
+# ─────────────────────────────────────────────
+# YAML Anchors — Repeat block definitions
+# ─────────────────────────────────────────────
+_all_blocks: &all_blocks
+  - label: "📝 Простий текст"
+    name: "simple_text"
+    widget: "object"
+    fields:
+      - {label: "Вміст", name: "body", widget: "markdown", hint: "**жирний**, *курсив*, - список"}
+  - label: "🔤 Заголовок (Стилізований)"
+    name: "styled_heading"
+    widget: "object"
+    fields:
+      - {label: "Текст заголовку", name: "text", widget: "string"}
+      - {label: "Рівень", name: "level", widget: "select", options: ["h2", "h3", "h4"], default: "h2"}
+      - {label: "Колір", name: "color", widget: "select", options: ["default", "blue", "green", "orange", "red", "purple"], default: "default"}
+      - {label: "Вирівнювання", name: "align", widget: "select", options: ["left", "center", "right"], default: "left"}
+  - label: "🎨 Стилізований текст"
+    name: "styled_text"
+    widget: "object"
+    fields:
+      - {label: "Вміст", name: "text", widget: "markdown"}
+      - {label: "Колір тексту", name: "color", widget: "select", options: ["default", "blue", "green", "orange", "red", "purple", "gray"], default: "default"}
+      - {label: "Фон", name: "bg_color", widget: "select", options: ["none", "light-blue", "light-green", "light-yellow", "light-red", "light-gray"], default: "none"}
+      - {label: "Вирівнювання", name: "align", widget: "select", options: ["left", "center", "right"], default: "left"}
+      - {label: "Жирність", name: "weight", widget: "select", options: ["normal", "semibold", "bold"], default: "normal"}
+  - label: "⚠️ Виділений блок / Повідомлення"
+    name: "alert_block"
+    widget: "object"
+    fields:
+      - {label: "Вміст", name: "content", widget: "markdown"}
+      - {label: "Тип", name: "variant", widget: "select", options: ["info", "success", "warning", "error", "note"], default: "info"}
+      - {label: "Заголовок (необов'язково)", name: "title", widget: "string", required: false}
+  - label: "📄 Список документів"
+    name: "document_links"
+    widget: "object"
+    fields:
+      - {label: "Назва групи", name: "category_title", widget: "string"}
+      - label: "Документи"
+        name: "documents"
+        widget: "list"
+        fields:
+          - {label: "Назва", name: "title", widget: "string"}
+          - {label: "Посилання (URL)", name: "url", widget: "string"}
+          - {label: "Іконка (emoji)", name: "icon", widget: "string", default: "📄", required: false}
+          - {label: "Опис", name: "description", widget: "string", required: false}
+  - label: "🖼️ Зображення + Текст"
+    name: "image_text"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - {label: "Зображення", name: "image", widget: "image"}
+      - {label: "Позиція зображення", name: "image_position", widget: "select", options: ["left", "right"], default: "right"}
+      - {label: "Текст", name: "body", widget: "markdown"}
+  - label: "🎬 Відео (YouTube)"
+    name: "video"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - {label: "YouTube ID", name: "video_id", widget: "string", hint: "Наприклад: 2GQdfpdfvZA"}
+  - label: "🖼️ Галерея зображень"
+    name: "gallery"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - label: "Зображення"
+        name: "images"
+        widget: "list"
+        fields:
+          - {label: "Зображення", name: "image", widget: "image"}
+  - label: "📊 Статистика (цифри)"
+    name: "stats_grid"
+    widget: "object"
+    fields:
+      - {label: "Колонки", name: "columns", widget: "select", options: ["2", "3", "4"], default: "2"}
+      - label: "Показники"
+        name: "stats"
+        widget: "list"
+        fields:
+          - {label: "Число", name: "number", widget: "string"}
+          - {label: "Підпис", name: "label", widget: "string"}
+          - {label: "Колір", name: "color", widget: "select", options: ["orange", "amber", "blue", "purple"], default: "orange"}
+  - label: "📅 Хронологія"
+    name: "timeline_block"
+    widget: "object"
+    fields:
+      - label: "Події"
+        name: "items"
+        widget: "list"
+        fields:
+          - {label: "Рік", name: "year", widget: "string"}
+          - {label: "Опис", name: "description", widget: "text"}
+          - {label: "Колір", name: "color", widget: "select", options: ["blue", "purple", "indigo", "pink", "teal"], default: "blue"}
+  - label: "🏛️ Сітка (Музей/Напрямки)"
+    name: "museum_grid"
+    widget: "object"
+    fields:
+      - {label: "Колонки", name: "columns", widget: "select", options: ["2", "3", "4"], default: "2"}
+      - label: "Елементи"
+        name: "items"
+        widget: "list"
+        fields:
+          - {label: "Іконка (emoji)", name: "icon", widget: "string"}
+          - {label: "Назва", name: "title", widget: "string"}
+          - {label: "Опис", name: "description", widget: "text"}
+          - {label: "Колір", name: "color", widget: "select", options: ["rose", "orange", "gray", "emerald", "blue", "purple"], default: "blue"}
+  - label: "👤 Картка адміністратора"
+    name: "admin_card"
+    widget: "object"
+    fields:
+      - {label: "Роль", name: "role", widget: "select", options: ["director", "deputy"], default: "deputy"}
+      - {label: "Посада", name: "position", widget: "string"}
+      - {label: "ПІБ", name: "name", widget: "string"}
+      - {label: "Фото", name: "photo", widget: "image", required: false}
+      - {label: "Категорія", name: "category", widget: "string", required: false}
+      - {label: "Заклад освіти", name: "institution", widget: "string", required: false}
+      - {label: "Спеціальність", name: "specialty", widget: "string", required: false}
+      - {label: "Опис", name: "description", widget: "text", required: false}
+      - label: "Освіта"
+        name: "education"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Рік", name: "year", widget: "string"}
+          - {label: "Деталі", name: "details", widget: "text"}
+  - label: "👥 Члени комісії"
+    name: "commission_members"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - {label: "Голова комісії", name: "head", widget: "string"}
+      - {label: "Секретар", name: "secretary", widget: "string"}
+      - label: "Члени"
+        name: "members"
+        widget: "list"
+        field: {label: "ПІБ", name: "member", widget: "string"}
+  - label: "🗓️ Розклад засідань"
+    name: "schedule_block"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - {label: "Колір", name: "variant", widget: "select", options: ["blue", "green", "purple", "amber", "teal"], default: "green"}
+      - label: "Засідання"
+        name: "meetings"
+        widget: "list"
+        fields:
+          - {label: "Номер", name: "number", widget: "string"}
+          - {label: "Назва", name: "label", widget: "string"}
+          - {label: "Дата", name: "date", widget: "string"}
+  - label: "📞 Контактна картка"
+    name: "contact_card"
+    widget: "object"
+    fields:
+      - {label: "ПІБ", name: "name", widget: "string"}
+      - {label: "Посада", name: "position", widget: "string", required: false}
+      - {label: "Фото", name: "photo", widget: "image", required: false}
+      - {label: "Телефон", name: "phone", widget: "string", required: false}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "Графік роботи", name: "schedule", widget: "string", required: false}
+      - {label: "Опис", name: "description", widget: "text", required: false}
+  - label: "❓ FAQ (Питання-відповіді)"
+    name: "faq_block"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - label: "Питання"
+        name: "items"
+        widget: "list"
+        fields:
+          - {label: "Питання", name: "question", widget: "string"}
+          - {label: "Відповідь", name: "answer", widget: "markdown"}
+  - label: "🔢 Нумерований список / Кроки"
+    name: "numbered_list"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - label: "Кроки"
+        name: "items"
+        widget: "list"
+        fields:
+          - {label: "Назва", name: "title", widget: "string"}
+          - {label: "Опис", name: "description", widget: "markdown", required: false}
+  - label: "🗂️ Таблиця"
+    name: "table_block"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - label: "Заголовки колонок"
+        name: "headers"
+        widget: "list"
+        fields:
+          - {label: "Текст", name: "text", widget: "string"}
+      - label: "Рядки"
+        name: "rows"
+        widget: "list"
+        fields:
+          - label: "Клітинки"
+            name: "cells"
+            widget: "list"
+            fields:
+              - {label: "Текст", name: "text", widget: "string"}
+  - label: "🎯 Картки з іконками"
+    name: "icon_cards"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - {label: "Колонки", name: "columns", widget: "select", options: ["2", "3", "4"], default: "3"}
+      - label: "Картки"
+        name: "cards"
+        widget: "list"
+        fields:
+          - {label: "Іконка (emoji)", name: "icon", widget: "string", default: "⭐"}
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "Опис", name: "description", widget: "text", required: false}
+  - label: "💬 Цитата / Відгук"
+    name: "quote_block"
+    widget: "object"
+    fields:
+      - {label: "Текст цитати", name: "text", widget: "text"}
+      - {label: "Автор", name: "author", widget: "string", required: false}
+      - {label: "Роль / Посада", name: "role", widget: "string", required: false}
+      - {label: "Фото", name: "photo", widget: "image", required: false}
+  - label: "🔘 Кнопка-посилання"
+    name: "button_block"
+    widget: "object"
+    fields:
+      - {label: "Текст кнопки", name: "text", widget: "string"}
+      - {label: "Посилання (URL)", name: "url", widget: "string"}
+      - {label: "Стиль", name: "style", widget: "select", options: ["primary", "accent", "outline", "green", "red"], default: "primary"}
+      - {label: "Розмір", name: "size", widget: "select", options: ["small", "medium", "large"], default: "medium"}
+      - {label: "Вирівнювання", name: "align", widget: "select", options: ["left", "center", "right"], default: "center"}
+      - {label: "Іконка (emoji)", name: "icon", widget: "string", required: false}
+      - {label: "Відкривати у новій вкладці", name: "new_tab", widget: "boolean", default: false}
+  - label: "👩‍🏫 Картки вчителів"
+    name: "teacher_cards"
+    widget: "object"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: false}
+      - {label: "Колонки", name: "columns", widget: "select", options: ["2", "3", "4"], default: "3"}
+      - label: "Вчителі"
+        name: "teachers"
+        widget: "list"
+        fields:
+          - {label: "ПІБ", name: "name", widget: "string"}
+          - {label: "Предмет", name: "subject", widget: "string", required: false}
+          - {label: "Фото", name: "photo", widget: "image", required: false}
+          - {label: "Категорія", name: "category", widget: "string", required: false, hint: "Наприклад: Вища категорія"}
+          - {label: "Стаж", name: "experience", widget: "string", required: false, hint: "Наприклад: 15 років"}
+          - {label: "Опис", name: "description", widget: "text", required: false}
+          - label: "Нагороди"
+            name: "awards"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Нагорода", name: "text", widget: "string"}
+
+collections:
+
+  # ─────────────────────────────────────────────
+  # ПРО ГІМНАЗІЮ
+  # ─────────────────────────────────────────────
+  - name: "about_pages"
+    label: "🏫 Про Гімназію"
+    folder: "src/about"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested:
+      depth: 2
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Назва сторінки", name: "title", widget: "string"}
+      - {label: "Короткий опис (SEO)", name: "description", widget: "string"}
+      - {label: "Permalink (URL)", name: "permalink", widget: "string", hint: "Наприклад: /about/passport/"}
+      - label: "Блоки сторінки"
+        name: "blocks"
+        widget: "list"
+        types: *all_blocks
+
+  # ─────────────────────────────────────────────
+  # БАТЬКАМ
+  # ─────────────────────────────────────────────
+  - name: "parents_pages"
+    label: "👨‍👩‍👧 Батькам"
+    folder: "src/parents"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested:
+      depth: 2
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Назва сторінки", name: "title", widget: "string"}
+      - {label: "Короткий опис (SEO)", name: "description", widget: "string"}
+      - {label: "Permalink (URL)", name: "permalink", widget: "string"}
+      - label: "Блоки сторінки"
+        name: "blocks"
+        widget: "list"
+        types: *all_blocks
+
+  # ─────────────────────────────────────────────
+  # УЧНЯМ
+  # ─────────────────────────────────────────────
+  - name: "students_pages"
+    label: "🎒 Учням"
+    folder: "src/students"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested:
+      depth: 2
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Назва сторінки", name: "title", widget: "string"}
+      - {label: "Короткий опис (SEO)", name: "description", widget: "string"}
+      - {label: "Permalink (URL)", name: "permalink", widget: "string"}
+      - label: "Блоки сторінки"
+        name: "blocks"
+        widget: "list"
+        types: *all_blocks
+
+  # ─────────────────────────────────────────────
+  # ОСВІТНЄ СЕРЕДОВИЩЕ
+  # ─────────────────────────────────────────────
+  - name: "environment_pages"
+    label: "🌿 Освітнє середовище"
+    folder: "src/environment"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested:
+      depth: 2
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Назва сторінки", name: "title", widget: "string"}
+      - {label: "Короткий опис (SEO)", name: "description", widget: "string"}
+      - {label: "Permalink (URL)", name: "permalink", widget: "string"}
+      - label: "Блоки сторінки"
+        name: "blocks"
+        widget: "list"
+        types: *all_blocks
+
+  # ─────────────────────────────────────────────
+  # ПЕДАГОГАМ
+  # ─────────────────────────────────────────────
+  - name: "staff_pages"
+    label: "👩‍🏫 Педагогам"
+    folder: "src/staff"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested:
+      depth: 2
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Назва сторінки", name: "title", widget: "string"}
+      - {label: "Короткий опис (SEO)", name: "description", widget: "string"}
+      - {label: "Permalink (URL)", name: "permalink", widget: "string"}
+      - label: "Блоки сторінки"
+        name: "blocks"
+        widget: "list"
+        types: *all_blocks
+
+  # ─────────────────────────────────────────────
+  # УПРАВЛІННЯ
+  # ─────────────────────────────────────────────
+  - name: "management_pages"
+    label: "🏛️ Управління"
+    folder: "src/management"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested:
+      depth: 2
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Назва сторінки", name: "title", widget: "string"}
+      - {label: "Короткий опис (SEO)", name: "description", widget: "string"}
+      - {label: "Permalink (URL)", name: "permalink", widget: "string"}
+      - label: "Блоки сторінки"
+        name: "blocks"
+        widget: "list"
+        types: *all_blocks
+
+  # ─────────────────────────────────────────────
+  # ІНШІ СТОРІНКИ (універсальна колекція)
+  # ─────────────────────────────────────────────
+  - name: "pages"
+    label: "📄 Інші сторінки"
+    folder: "src/pages"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested:
+      depth: 3
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Назва сторінки", name: "title", widget: "string"}
+      - {label: "Короткий опис (SEO)", name: "description", widget: "string"}
+      - {label: "Permalink (URL)", name: "permalink", widget: "string", hint: "Будь-який URL, наприклад: /new-section/page-name/"}
+      - label: "Блоки сторінки"
+        name: "blocks"
+        widget: "list"
+        types: *all_blocks
+
+  # ─────────────────────────────────────────────
+  # НАЛАШТУВАННЯ
+  # ─────────────────────────────────────────────
+  - name: "settings"
+    label: "⚙️ Налаштування"
+    files:
+      - label: "Головне меню"
+        name: "navigation"
+        file: "src/_data/navigation.json"
+        fields:
+          - label: "Пункти меню"
+            name: "root"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "label", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - label: "Підменю"
+                name: "children"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Назва", name: "label", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string"}

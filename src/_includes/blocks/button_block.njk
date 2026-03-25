@@ -1,0 +1,37 @@
+{% set styleMap = {
+    'primary': 'bg-gradient-to-r from-primary to-blue-600 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5',
+    'accent': 'bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 shadow-lg hover:shadow-xl hover:-translate-y-0.5',
+    'outline': 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
+    'green': 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5',
+    'red': 'bg-gradient-to-r from-red-500 to-rose-500 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5'
+} %}
+
+{% set sizeMap = {
+    'small': 'px-5 py-2 text-sm',
+    'medium': 'px-7 py-3 text-base',
+    'large': 'px-9 py-4 text-lg'
+} %}
+
+{% set alignMap = {
+    'left': 'justify-start',
+    'center': 'justify-center',
+    'right': 'justify-end'
+} %}
+
+{% set btnStyle = styleMap[block.style] or styleMap['primary'] %}
+{% set btnSize = sizeMap[block.size] or sizeMap['medium'] %}
+{% set btnAlign = alignMap[block.align] or alignMap['center'] %}
+
+<div class="my-6 flex {{ btnAlign }}">
+    <a href="{{ block.url }}" 
+       {% if block.new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+       class="inline-flex items-center gap-2 font-bold rounded-full transition-all duration-300 {{ btnStyle }} {{ btnSize }}">
+        {% if block.icon %}
+        <span>{{ block.icon }}</span>
+        {% endif %}
+        {{ block.text }}
+        {% if block.new_tab %}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        {% endif %}
+    </a>
+</div>

@@ -1,0 +1,105 @@
+---
+layout: layouts/base.njk
+---
+
+<!-- Page Header -->
+<div class="bg-gray-50 border-b border-gray-100 py-12 md:py-16">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-heading font-bold text-gray-900 relative inline-block">
+            {{ title }}
+            <span class="block h-1.5 w-full bg-accent/30 absolute bottom-1 left-0 -z-10 transform -rotate-1"></span>
+        </h1>
+        {% if description %}
+        <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">{{ description }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Page Builder Blocks -->
+<div class="page-content">
+    {% if blocks %}
+        <section class="py-12">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto">
+                    {# First pass - render director and non-deputy blocks #}
+                    {% for block in blocks %}
+                        {% if block.type == 'simple_text' %}
+                            {% include "blocks/simple_text.njk" %}
+                        {% elif block.type == 'alert_block' %}
+                            {% include "blocks/alert_block.njk" %}
+                        {% elif block.type == 'timeline_block' %}
+                            {% include "blocks/timeline_block.njk" %}
+                        {% elif block.type == 'stats_grid' %}
+                            {% include "blocks/stats_grid.njk" %}
+                        {% elif block.type == 'museum_grid' %}
+                            {% include "blocks/museum_grid.njk" %}
+                        {% elif block.type == 'image_text' %}
+                            {% include "blocks/image_text.njk" %}
+                        {% elif block.type == 'gallery' %}
+                            {% include "blocks/gallery.njk" %}
+                        {% elif block.type == 'document_links' %}
+                            {% include "blocks/document_links.njk" %}
+                        {% elif block.type == 'styled_heading' %}
+                            {% include "blocks/styled_heading.njk" %}
+                        {% elif block.type == 'styled_text' %}
+                            {% include "blocks/styled_text.njk" %}
+                        {% elif block.type == 'video' %}
+                            {% include "blocks/video.njk" %}
+                        {% elif block.type == 'commission_members' %}
+                            {% include "blocks/commission_members.njk" %}
+                        {% elif block.type == 'schedule_block' %}
+                            {% include "blocks/schedule_block.njk" %}
+                        {% elif block.type == 'contact_card' %}
+                            {% include "blocks/contact_card.njk" %}
+                        {% elif block.type == 'faq_block' %}
+                            {% include "blocks/faq_block.njk" %}
+                        {% elif block.type == 'numbered_list' %}
+                            {% include "blocks/numbered_list.njk" %}
+                        {% elif block.type == 'table_block' %}
+                            {% include "blocks/table_block.njk" %}
+                        {% elif block.type == 'icon_cards' %}
+                            {% include "blocks/icon_cards.njk" %}
+                        {% elif block.type == 'quote_block' %}
+                            {% include "blocks/quote_block.njk" %}
+                        {% elif block.type == 'button_block' %}
+                            {% include "blocks/button_block.njk" %}
+                        {% elif block.type == 'teacher_cards' %}
+                            {% include "blocks/teacher_cards.njk" %}
+                        {% elif block.type == 'admin_card' and block.role == 'director' %}
+                            {% set admin_card = block %}
+                            {% include "blocks/admin_card.njk" %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {# Second pass - render deputies in grid #}
+                    {% set has_deputies = false %}
+                    {% for block in blocks %}
+                        {% if block.type == 'admin_card' and block.role == 'deputy' %}
+                            {% set has_deputies = true %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if has_deputies %}
+                    <div class="grid md:grid-cols-2 gap-8 mt-8">
+                        {% for block in blocks %}
+                            {% if block.type == 'admin_card' and block.role == 'deputy' %}
+                                {% set admin_card = block %}
+                                {% include "blocks/admin_card.njk" %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <!-- Default Content Fallback if no blocks used -->
+        <section class="py-12">
+            <div class="container mx-auto px-4">
+                <div class="prose prose-teal mx-auto">
+                    {{ content | safe }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+</div>

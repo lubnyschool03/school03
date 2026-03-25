@@ -1,0 +1,43 @@
+{% set colorMap = {
+  'default': '',
+  'blue': 'text-blue-700',
+  'green': 'text-green-700',
+  'orange': 'text-orange-700',
+  'red': 'text-red-700',
+  'purple': 'text-purple-700',
+  'gray': 'text-gray-700'
+} %}
+
+{% set bgColorMap = {
+  'none': '',
+  'light-blue': 'bg-blue-50 p-6 rounded-lg',
+  'light-green': 'bg-green-50 p-6 rounded-lg',
+  'light-yellow': 'bg-yellow-50 p-6 rounded-lg',
+  'light-red': 'bg-red-50 p-6 rounded-lg',
+  'light-gray': 'bg-gray-50 p-6 rounded-lg'
+} %}
+
+{% set alignMap = {
+  'left': 'text-left',
+  'center': 'text-center',
+  'right': 'text-right'
+} %}
+
+{% set weightMap = {
+  'normal': 'font-normal',
+  'bold': 'font-bold',
+  'semibold': 'font-semibold'
+} %}
+
+{% set textColor = colorMap[block.color] or '' %}
+{% set bgColor = bgColorMap[block.bg_color] or '' %}
+{% set align = alignMap[block.align] or 'text-left' %}
+{% set weight = weightMap[block.weight] or 'font-normal' %}
+
+<section class="py-8">
+  <div class="container mx-auto px-4">
+    <div class="prose prose-lg prose-teal mx-auto {{ textColor }} {{ bgColor }} {{ align }} {{ weight }}">
+      {{ block.text | markdownify | safe }}
+    </div>
+  </div>
+</section>

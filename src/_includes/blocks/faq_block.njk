@@ -1,0 +1,28 @@
+<div class="my-8 max-w-4xl mx-auto">
+    {% if block.title %}
+    <h3 class="text-2xl font-heading font-bold text-gray-900 mb-6">{{ block.title }}</h3>
+    {% endif %}
+    <div class="space-y-3" x-data="{ activeIndex: null }">
+        {% for item in block.items %}
+        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <button 
+                @click="activeIndex = activeIndex === {{ loop.index0 }} ? null : {{ loop.index0 }}"
+                class="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors">
+                <span class="font-semibold text-gray-800 pr-4">{{ item.question }}</span>
+                <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" 
+                     :class="activeIndex === {{ loop.index0 }} ? 'rotate-180' : ''" 
+                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div x-show="activeIndex === {{ loop.index0 }}" 
+                 x-collapse
+                 class="px-5 pb-5">
+                <div class="prose prose-sm text-gray-600 border-t border-gray-100 pt-4">
+                    {{ item.answer | markdownify | safe }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
