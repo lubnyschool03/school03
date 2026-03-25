@@ -219,16 +219,6 @@
       "label": "Контакти",
       "url": "#contacts",
       "children": []
-    },
-    {
-      "label": "test",
-      "url": "/test/",
-      "children": [
-        {
-          "label": "test",
-          "url": "/test/test/"
-        }
-      ]
     }
   ]
 }
