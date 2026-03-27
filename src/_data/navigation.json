@@ -1,224 +1,224 @@
 {
   "root": [
     {
-      "label": "Про Гімназію",
-      "url": "/about/history/",
-      "children": [
-        {
-          "label": "Історія закладу",
-          "url": "/about/history/"
-        },
-        {
-          "label": "Паспорт закладу",
-          "url": "/about/passport/"
-        },
-        {
-          "label": "Адміністрація",
-          "url": "/about/administration/"
-        },
-        {
-          "label": "Публічна інформація",
-          "url": "/about/public-info/"
-        },
-        {
-          "label": "Мобілізаційний план",
-          "url": "/about/mobilization/"
-        },
-        {
-          "label": "Правила внутрішнього розпорядку",
-          "url": "/about/internal-rules/"
-        }
-      ]
+        "label": "Про Гімназію",
+        "url": "/about/history/",
+        "children": [
+            {
+                "label": "Історія закладу",
+                "url": "/about/history/"
+            },
+            {
+                "label": "Паспорт закладу",
+                "url": "/about/passport/"
+            },
+            {
+                "label": "Адміністрація",
+                "url": "/about/administration/"
+            },
+            {
+                "label": "Публічна інформація",
+                "url": "/about/public-info/"
+            },
+            {
+                "label": "Мобілізаційний план",
+                "url": "/about/mobilization/"
+            },
+            {
+                "label": "Правила внутрішнього розпорядку",
+                "url": "/about/internal-rules/"
+            }
+        ]
     },
     {
-      "label": "Учням",
-      "url": "/students/study/",
-      "children": [
-        {
-          "label": "Навчальний процес",
-          "url": "/students/study/"
-        },
-        {
-          "label": "Розклад (Диспетчер)",
-          "url": "/students/dispatcher/"
-        },
-        {
-          "label": "Завдання для дисциплін",
-          "url": "/students/assignments/"
-        },
-        {
-          "label": "Позакласна робота",
-          "url": "/students/extra/"
-        },
-        {
-          "label": "Безпека учня",
-          "url": "/students/safety/"
-        },
-        {
-          "label": "Бібліотека",
-          "url": "/students/library/"
-        },
-        {
-          "label": "Учнівське самоврядування",
-          "url": "/students/self-government/"
-        },
-        {
-          "label": "Волонтерство",
-          "url": "/students/volunteering/"
-        },
-        {
-          "label": "Профорієнтація",
-          "url": "/students/career-guidance/"
-        }
-      ]
+        "label": "Учням",
+        "url": "/students/study/",
+        "children": [
+            {
+                "label": "Навчальний процес",
+                "url": "/students/study/"
+            },
+            {
+                "label": "Розклад (Диспетчер)",
+                "url": "/students/dispatcher/"
+            },
+            {
+                "label": "Завдання для дисциплін",
+                "url": "/students/assignments/"
+            },
+            {
+                "label": "Позакласна робота",
+                "url": "/students/extra/"
+            },
+            {
+                "label": "Безпека учня",
+                "url": "/students/safety/"
+            },
+            {
+                "label": "Бібліотека",
+                "url": "/students/library/"
+            },
+            {
+                "label": "Учнівське самоврядування",
+                "url": "/students/self-government/"
+            },
+            {
+                "label": "Волонтерство",
+                "url": "/students/volunteering/"
+            },
+            {
+                "label": "Профорієнтація",
+                "url": "/students/career-guidance/"
+            }
+        ]
     },
     {
-      "label": "Батькам",
-      "url": "/parents/admission/",
-      "children": [
-        {
-          "label": "Умови вступу",
-          "url": "/parents/admission/"
-        },
-        {
-          "label": "Харчування",
-          "url": "/parents/nutrition/"
-        },
-        {
-          "label": "Безпека",
-          "url": "/parents/safety/"
-        },
-        {
-          "label": "Протидія булінгу",
-          "url": "/parents/bullying/"
-        },
-        {
-          "label": "Поради психолога",
-          "url": "/parents/psychologist/"
-        }
-      ]
+        "label": "Батькам",
+        "url": "/parents/admission/",
+        "children": [
+            {
+                "label": "Умови вступу",
+                "url": "/parents/admission/"
+            },
+            {
+                "label": "Харчування",
+                "url": "/parents/nutrition/"
+            },
+            {
+                "label": "Безпека",
+                "url": "/parents/safety/"
+            },
+            {
+                "label": "Протидія булінгу",
+                "url": "/parents/bullying/"
+            },
+            {
+                "label": "Поради психолога",
+                "url": "/parents/psychologist/"
+            }
+        ]
     },
     {
-      "label": "Освітнє середовище",
-      "url": "/environment/antibullying/",
-      "children": [
-        {
-          "label": "Антибулінгова програма",
-          "url": "/environment/antibullying/"
-        },
-        {
-          "label": "Насильництво",
-          "url": "/environment/violence/"
-        },
-        {
-          "label": "Жорстоке поводження з тваринами",
-          "url": "/environment/animal-cruelty/"
-        },
-        {
-          "label": "Гендерна рівність",
-          "url": "/environment/gender-equality/"
-        },
-        {
-          "label": "Освітній інспектор",
-          "url": "/environment/inspector/"
-        },
-        {
-          "label": "Кібербезпека",
-          "url": "/environment/cybersecurity/"
-        },
-        {
-          "label": "Бібліотечний фонд",
-          "url": "/environment/library-fund/"
-        },
-        {
-          "label": "Правила для учнів",
-          "url": "/environment/student-rules/"
-        },
-        {
-          "label": "Пропускний режим",
-          "url": "/environment/access-control/"
-        }
-      ]
+        "label": "Освітнє середовище",
+        "url": "/environment/antibullying/",
+        "children": [
+            {
+                "label": "Антибулінгова програма",
+                "url": "/environment/antibullying/"
+            },
+            {
+                "label": "Насильництво",
+                "url": "/environment/violence/"
+            },
+            {
+                "label": "Жорстоке поводження з тваринами",
+                "url": "/environment/animal-cruelty/"
+            },
+            {
+                "label": "Гендерна рівність",
+                "url": "/environment/gender-equality/"
+            },
+            {
+                "label": "Освітній інспектор",
+                "url": "/environment/inspector/"
+            },
+            {
+                "label": "Кібербезпека",
+                "url": "/environment/cybersecurity/"
+            },
+            {
+                "label": "Бібліотечний фонд",
+                "url": "/environment/library-fund/"
+            },
+            {
+                "label": "Правила для учнів",
+                "url": "/environment/student-rules/"
+            },
+            {
+                "label": "Пропускний режим",
+                "url": "/environment/access-control/"
+            }
+        ]
     },
     {
-      "label": "Оцінювання",
-      "url": "/about/assessment/",
-      "children": [
-        {
-          "label": "Критерії оцінювання",
-          "url": "/about/assessment/"
-        },
-        {
-          "label": "Моніторинг досягнень",
-          "url": "/about/monitoring/"
-        }
-      ]
+        "label": "Оцінювання",
+        "url": "/about/assessment/",
+        "children": [
+            {
+                "label": "Критерії оцінювання",
+                "url": "/about/assessment/"
+            },
+            {
+                "label": "Моніторинг досягнень",
+                "url": "/about/monitoring/"
+            }
+        ]
     },
     {
-      "label": "Педагогам",
-      "url": "/staff/academic-integrity/",
-      "children": [
-        {
-          "label": "Академічна доброчесність",
-          "url": "/staff/academic-integrity/"
-        },
-        {
-          "label": "Атестація",
-          "url": "/about/attestation/"
-        },
-        {
-          "label": "Сертифікація",
-          "url": "/staff/certification/"
-        },
-        {
-          "label": "Підвищення кваліфікації",
-          "url": "/staff/professional-development/"
-        }
-      ]
+        "label": "Педагогам",
+        "url": "/staff/academic-integrity/",
+        "children": [
+            {
+                "label": "Академічна доброчесність",
+                "url": "/staff/academic-integrity/"
+            },
+            {
+                "label": "Атестація",
+                "url": "/about/attestation/"
+            },
+            {
+                "label": "Сертифікація",
+                "url": "/staff/certification/"
+            },
+            {
+                "label": "Підвищення кваліфікації",
+                "url": "/staff/professional-development/"
+            }
+        ]
     },
     {
-      "label": "Управління",
-      "url": "/management/processes/",
-      "children": [
-        {
-          "label": "Управлінський процес",
-          "url": "/management/processes/"
-        },
-        {
-          "label": "Мобілізаційний план",
-          "url": "/about/mobilization/"
-        },
-        {
-          "label": "Академічна доброчесність",
-          "url": "/management/academic-integrity/"
-        },
-        {
-          "label": "Безбар'єрність",
-          "url": "/management/accessibility/"
-        },
-        {
-          "label": "Планування",
-          "url": "/management/planning/"
-        },
-        {
-          "label": "Кадрова політика",
-          "url": "/management/hr-policy/"
-        },
-        {
-          "label": "Положення про нагородження",
-          "url": "/management/awards/"
-        }
-      ]
+        "label": "Управління",
+        "url": "/management/processes/",
+        "children": [
+            {
+                "label": "Управлінський процес",
+                "url": "/management/processes/"
+            },
+            {
+                "label": "Мобілізаційний план",
+                "url": "/about/mobilization/"
+            },
+            {
+                "label": "Академічна доброчесність",
+                "url": "/management/academic-integrity/"
+            },
+            {
+                "label": "Безбар'єрність",
+                "url": "/management/accessibility/"
+            },
+            {
+                "label": "Планування",
+                "url": "/management/planning/"
+            },
+            {
+                "label": "Кадрова політика",
+                "url": "/management/hr-policy/"
+            },
+            {
+                "label": "Положення про нагородження",
+                "url": "/management/awards/"
+            }
+        ]
     },
     {
-      "label": "Facebook",
-      "url": "https://www.facebook.com/gymnasium.prosvit/",
-      "children": []
+        "label": "Facebook",
+        "url": "https://www.facebook.com/gymnasium.prosvit/",
+        "children": []
     },
     {
-      "label": "Контакти",
-      "url": "#contacts",
-      "children": []
+        "label": "Контакти",
+        "url": "#contacts",
+        "children": []
     }
   ]
 }

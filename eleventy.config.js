@@ -9,6 +9,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/admin");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
     eleventyConfig.addPassthroughCopy("src/google180600d5ded1f79b.html");
+    eleventyConfig.addPassthroughCopy("src/favicon.png");
+    eleventyConfig.addPassthroughCopy("src/favicon.ico");
 
     // Watch targets
     eleventyConfig.addWatchTarget("./src/css/");
