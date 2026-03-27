@@ -11,6 +11,13 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/google180600d5ded1f79b.html");
     eleventyConfig.addPassthroughCopy("src/favicon.png");
     eleventyConfig.addPassthroughCopy("src/favicon.ico");
+    eleventyConfig.addPassthroughCopy("src/favicon-48x48.png");
+    eleventyConfig.addPassthroughCopy("src/favicon-32x32.png");
+    eleventyConfig.addPassthroughCopy("src/favicon-16x16.png");
+    eleventyConfig.addPassthroughCopy("src/favicon-192x192.png");
+    eleventyConfig.addPassthroughCopy("src/favicon-512x512.png");
+    eleventyConfig.addPassthroughCopy("src/apple-touch-icon.png");
+    eleventyConfig.addPassthroughCopy("src/site.webmanifest");
 
     // Watch targets
     eleventyConfig.addWatchTarget("./src/css/");
