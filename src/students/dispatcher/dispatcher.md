@@ -5,18 +5,17 @@ description: Розклад уроків та дзвінків Гімназії 
 permalink: /students/dispatcher/
 blocks:
   - type: styled_heading
-    text: "🕐 Диспетчер розкладу"
-    level: "h2"
-    align: "center"
-    color: "blue"
-
+    text: 🕐 Диспетчер розкладу
+    level: h2
+    align: center
+    color: blue
   - type: styled_heading
-    text: "🔔 Розклад дзвінків"
-    level: "h3"
-    align: "left"
-
+    text: 🔔 Розклад дзвінків
+    level: h3
+    align: left
+    color: green
   - type: simple_text
-    body: |
+    body: >
       <table style="width:100%; border-collapse:collapse; font-size:1rem;">
         <thead>
           <tr style="background:#1d4ed8; color:white;">
@@ -35,29 +34,24 @@ blocks:
           <tr style="background:#f0f9ff"><td style="padding:10px 16px">7-й урок</td><td style="padding:10px 16px">13:45</td><td style="padding:10px 16px">14:30</td></tr>
         </tbody>
       </table>
-
   - type: styled_heading
-    text: "📅 Розклад уроків"
-    level: "h3"
-    align: "left"
-
+    text: 📅 Розклад уроків
+    level: h3
+    align: left
+    color: green
   - type: document_links
-    category_title: "Розклад занять"
+    category_title: Розклад занять
     documents:
       - title: Розклад уроків — початкова школа (1–4 кл.)
         url: "#"
-        icon: "📅"
+        icon: 📅
         description: Актуальний розклад (оновлюється щосеместру)
       - title: Розклад уроків — гімназія (5–9 кл.)
         url: "#"
-        icon: "📅"
-        description: Актуальний розклад
-      - title: Розклад уроків — старша школа (10–11 кл.)
-        url: "#"
-        icon: "📅"
+        icon: 📅
         description: Актуальний розклад
       - title: Розклад гурткової роботи
         url: "#"
-        icon: "🎨"
+        icon: 🎨
         description: Позакласні заняття та гуртки
 ---
