@@ -13,7 +13,7 @@ blocks:
     text: 🔔 Розклад дзвінків
     level: h3
     align: left
-    color: green
+    color: blue
   - type: simple_text
     body: >
       <table style="width:100%; border-collapse:collapse; font-size:1rem;">
@@ -38,7 +38,7 @@ blocks:
     text: 📅 Розклад уроків
     level: h3
     align: left
-    color: green
+    color: blue
   - type: document_links
     category_title: Розклад занять
     documents:
