@@ -69,7 +69,7 @@ blocks:
         icon: 💰
         description: Фінансова звітність та використання коштів
       - title: Наявність вакантних посад
-        url: "#"
+        url: https://drive.google.com/file/d/1Ngopq5EGOpp69wp4fI6eoNVLutgjc7mn/view?usp=sharing
         icon: 💼
         description: ""
       - title: Критерії оцінювання
