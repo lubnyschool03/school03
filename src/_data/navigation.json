@@ -81,10 +81,6 @@
       "url": "/parents/admission/",
       "children": [
         {
-          "url": "https://drive.google.com/drive/folders/1-7B0HHonTYOOnK_vXbb5gmaaCCboQd7g?usp=sharing",
-          "label": "Інформація"
-        },
-        {
           "label": "Умови вступу",
           "url": "/parents/admission/"
         },
@@ -103,6 +99,10 @@
         {
           "label": "Поради психолога",
           "url": "/parents/psychologist/"
+        },
+        {
+          "url": "https://drive.google.com/drive/folders/1-7B0HHonTYOOnK_vXbb5gmaaCCboQd7g?usp=sharing",
+          "label": "Інформація"
         }
       ]
     },
