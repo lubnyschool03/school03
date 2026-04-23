@@ -77,6 +77,10 @@
       "url": "/parents/admission/",
       "children": [
         {
+          "url": "/parents/introduction/",
+          "label": "Умови вступу із ТОТ"
+        },
+        {
           "label": "Умови вступу",
           "url": "/parents/admission/"
         },
@@ -95,10 +99,6 @@
         {
           "label": "Поради психолога",
           "url": "/parents/psychologist/"
-        },
-        {
-          "url": "/parents/introduction/",
-          "label": "Умови вступу із ТОТ"
         }
       ]
     },
