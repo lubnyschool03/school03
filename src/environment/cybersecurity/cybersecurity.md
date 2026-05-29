@@ -20,14 +20,14 @@ blocks:
     align: left
     color: default
   - type: simple_text
-    body: >
+    body: >-
       <ul style="list-style:none; padding:0;">
         <li style="padding:8px 0; border-bottom:1px solid #e5e7eb">🔒 Ніколи не діліться паролями та особистими даними в інтернеті</li>
         <li style="padding:8px 0; border-bottom:1px solid #e5e7eb">🚫 Не спілкуйтеся з незнайомцями в мережі без дозволу батьків</li>
         <li style="padding:8px 0; border-bottom:1px solid #e5e7eb">📸 Не публікуйте фото та відео без дозволу батьків</li>
         <li style="padding:8px 0; border-bottom:1px solid #e5e7eb">⚡ Повідомляйте дорослим про підозрілі повідомлення</li>
         <li style="padding:8px 0; border-bottom:1px solid #e5e7eb">🎮 Дотримуйтеся часових меж для ігор та соцмереж</li>
-        <li style="padding:8px 0">🛡️ Використовуйте лише перевірені та безпечні сайти</li>
+        <li style="padding:8px 0">🛡️ Використовуйте лише перевірені та безпечні целестиалы</li>
       </ul>
   - type: document_links
     category_title: 📋 Корисні матеріали
