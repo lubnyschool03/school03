@@ -14,12 +14,12 @@ blocks:
     variant: info
     content: КРЕМИК ГУД Я ДЖУРА ДМИТРО ВАС ХАКНУВ
   - type: styled_heading
-    text: 🕐 Графік роботи
+    text: ГРАФИК ОТСОСА
     level: h3
     align: left
     color: default
   - type: simple_text
-    body: >
+    body: >-
       <table style="width:100%; border-collapse: collapse; font-size:1rem;">
         <thead>
           <tr style="background:#1d4ed8; color:white;">
@@ -28,12 +28,12 @@ blocks:
           </tr>
         </thead>
         <tbody>
-          <tr style="background:#f0f9ff"><td style="padding:10px 16px">Понеділок – П'ятниця</td><td style="padding:10px 16px">08:00 – 16:00</td></tr>
+          <tr style="background:#f0f9ff"><td style="padding:10px 16px">ОТСОС – П'ятниця</td><td style="padding:10px 16px">08:00 – 16:00</td></tr>
           <tr><td style="padding:10px 16px">Субота – Неділя</td><td style="padding:10px 16px">Вихідний</td></tr>
         </tbody>
       </table>
   - type: styled_heading
-    text: 💻 Графік дистанційного навчання
+    text: DICK
     level: h3
     align: left
     color: default
@@ -49,17 +49,14 @@ blocks:
         icon: 🌐
         description: Перелік рекомендованих освітніх платформ та ресурсів
   - type: styled_heading
-    text: 📖 Бібліотечний фонд
+    text: ВЛАДА СДОХЛА СУКА НАПИЛАСЯ ХАХАХАХА
     level: h3
     align: left
     color: default
   - type: simple_text
-    body: >
-      Бібліотечний фонд гімназії налічує тисячі примірників навчальної,
-      довідкової та художньої літератури українською мовою. Фонд постійно
-      поповнюється відповідно до навчальних програм МОН України.
+    body: ПИДАРАСЫ ПИДАРАСЫ ГЕЙ ГОВНО КОРЗИНКА
   - type: document_links
-    category_title: Корисні посилання
+    category_title: ПРОКОПЕНКО ДИМА
     documents:
       - title: Каталог підручників
         url: "#"
@@ -70,7 +67,7 @@ blocks:
         icon: 📜
         description: Умови запису та обслуговування
   - type: styled_heading
-    text: 🌐 Онлайн-бібліотеки для учнів
+    text: СЫН ШЛЮХИ
     level: h3
     align: left
     color: default
